@@ -1,11 +1,17 @@
 package com.TeamEight.UniversityManagement.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = Student.TABLE_NAME)
 public class Student {
     private String studentId;
     private String studentName;
     private int yearOfJoining;
     private String course;
     private Department department;
+    public static final String TABLE_NAME = "STUDENT";
 
     public String getStudentId() {
         return studentId;

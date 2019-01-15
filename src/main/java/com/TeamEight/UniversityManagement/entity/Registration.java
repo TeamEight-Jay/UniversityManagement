@@ -1,5 +1,10 @@
 package com.TeamEight.UniversityManagement.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = Registration.TABLE_NAME)
 public class Registration {
     private String registrationId;
     private Student studentId;
@@ -7,6 +12,7 @@ public class Registration {
     private Subject subjectId;
     private int semester;
     private int score;
+    public static final String TABLE_NAME = "REGISTRATION";
 
     public String getRegistrationId() {
         return registrationId;

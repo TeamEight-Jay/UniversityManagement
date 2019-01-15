@@ -1,12 +1,15 @@
 package com.TeamEight.UniversityManagement.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = Department.TABLE_NAME)
 public class Department {
     private String departmentId;
     private String departmentName;
     private Professor headOfDepartment;
+    public static final String TABLE_NAME = "DEPARTMENT";
 
 
     public String getDepartmentId() {
