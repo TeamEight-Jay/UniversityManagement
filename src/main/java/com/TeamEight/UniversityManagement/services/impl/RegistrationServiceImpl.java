@@ -14,12 +14,13 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public Registration add(Registration registration) {
-        Registration addedRegistration=registrationRepository.save(registration);
+        Registration addedRegistration = registrationRepository.save(registration);
         return addedRegistration;
     }
 
     @Override
     public Registration select(String registrationId) {
+
         return registrationRepository.findOne(registrationId);
     }
 }

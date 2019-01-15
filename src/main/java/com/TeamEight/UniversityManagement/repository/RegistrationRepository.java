@@ -1,11 +1,12 @@
 package com.TeamEight.UniversityManagement.repository;
 
+import com.TeamEight.UniversityManagement.entity.Registration;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 
-public interface RegistrationRepository extends CrudRepository<RegistrationRepository, String> {
+public interface RegistrationRepository extends CrudRepository<Registration, String> {
     @Query(value = "SELECT SUM(score) FROM Registration WHERE Registration.studentId=Student.studentId " +
             "&&" + "Registration.semester= :semester ", nativeQuery = true)
     int findTotalSemesterScore(@Param("semester") int semester);
