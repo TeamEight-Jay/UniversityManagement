@@ -1,7 +1,8 @@
-package com.TeamEight.UniversityManagement.services;
+package com.TeamEight.UniversityManagement.services.impl;
 
 import com.TeamEight.UniversityManagement.entity.Registration;
 import com.TeamEight.UniversityManagement.repository.RegistrationRepository;
+import com.TeamEight.UniversityManagement.services.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

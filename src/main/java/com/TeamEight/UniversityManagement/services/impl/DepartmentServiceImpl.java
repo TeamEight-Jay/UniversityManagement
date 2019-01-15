@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DepartmentServiceIMPL implements DepartmentService {
+public class DepartmentServiceImpl implements DepartmentService {
 	@Autowired
 	DepartmentRepository departmentRepository;
 	@Override
@@ -18,7 +18,6 @@ public class DepartmentServiceIMPL implements DepartmentService {
 
 	@Override
 	public Department select(String departmentId) {
-		departmentRepository.findOne(departmentId);
-		return null;
+		return departmentRepository.findOne(departmentId);
 	}
 }

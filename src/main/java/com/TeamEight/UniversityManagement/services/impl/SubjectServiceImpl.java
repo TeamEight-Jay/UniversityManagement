@@ -1,7 +1,8 @@
-package com.TeamEight.UniversityManagement.services;
+package com.TeamEight.UniversityManagement.services.impl;
 
 import com.TeamEight.UniversityManagement.entity.Subject;
 import com.TeamEight.UniversityManagement.repository.SubjectRepository;
+import com.TeamEight.UniversityManagement.services.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
