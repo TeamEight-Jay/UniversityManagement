@@ -19,11 +19,11 @@ public class RegistrationController {
     @PostMapping("/add")
     public RegistrationDTO add(@RequestBody RegistrationDTO registrationDTO){
         Registration registration=DTOConvertor.toRegistrationEntity(registrationDTO);
-        registrationService.add(registration);
-        return registrationDTO;
+        Registration registrationCreated = registrationService.add(registration);
+        return EntityConvertor.toRegistrationDTO(registrationCreated);
     }
 
-    @GetMapping("/select")
+    @GetMapping("/select/{registrationId}")
     public RegistrationDTO select(@PathVariable String registrationId){
         Registration registration = registrationService.select(registrationId);
         RegistrationDTO registrationDTO = EntityConvertor.toRegistrationDTO(registration);

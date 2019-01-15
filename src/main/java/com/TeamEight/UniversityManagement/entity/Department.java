@@ -35,7 +35,7 @@ public class Department {
 
     @Override
     public String toString() {
-        return "DepartmentRepo{" +
+        return "DepartmentRepository{" +
                 "departmentId='" + departmentId + '\'' +
                 ", departmentName='" + departmentName + '\'' +
                 ", headOfDepartment=" + headOfDepartment +
