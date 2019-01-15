@@ -17,8 +17,6 @@ public class EntityConvertor {
     {
         DepartmentDTO departmentDTO=new DepartmentDTO();
         BeanUtils.copyProperties(department,departmentDTO);
-        departmentDTO.setHeadOfDepartment(department.getHeadOfDepartment().getProfessorId());
-
         return departmentDTO;
     }
 

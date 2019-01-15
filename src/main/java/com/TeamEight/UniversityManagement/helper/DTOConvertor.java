@@ -25,9 +25,6 @@ public class DTOConvertor {
     {
         Department department=new Department();
         BeanUtils.copyProperties(departmentDTO,department);
-        Professor headOfDepartment=professorService.select(departmentDTO.getHeadOfDepartment());
-        department.setHeadOfDepartment(headOfDepartment);
-
         return department;
     }
 

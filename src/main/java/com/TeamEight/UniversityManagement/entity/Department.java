@@ -10,7 +10,6 @@ public class Department {
     @Id
     private String departmentId;
     private String departmentName;
-    private Professor headOfDepartment;
     public static final String TABLE_NAME = "DEPARTMENT";
 
 
@@ -30,20 +29,11 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public Professor getHeadOfDepartment() {
-        return headOfDepartment;
-    }
-
-    public void setHeadOfDepartment(Professor headOfDepartment) {
-        this.headOfDepartment = headOfDepartment;
-    }
-
     @Override
     public String toString() {
         return "DepartmentRepository{" +
                 "departmentId='" + departmentId + '\'' +
                 ", departmentName='" + departmentName + '\'' +
-                ", headOfDepartment=" + headOfDepartment +
                 '}';
     }
 }
