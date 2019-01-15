@@ -2,9 +2,11 @@ package com.TeamEight.UniversityManagement.helper;
 
 import com.TeamEight.UniversityManagement.dto.DepartmentDTO;
 import com.TeamEight.UniversityManagement.dto.ProfessorDTO;
+import com.TeamEight.UniversityManagement.dto.RegistrationDTO;
 import com.TeamEight.UniversityManagement.dto.StudentDTO;
 import com.TeamEight.UniversityManagement.entity.Department;
 import com.TeamEight.UniversityManagement.entity.Professor;
+import com.TeamEight.UniversityManagement.entity.Registration;
 import com.TeamEight.UniversityManagement.entity.Student;
 import com.TeamEight.UniversityManagement.services.DepartmentService;
 import com.TeamEight.UniversityManagement.services.ProfessorService;
@@ -40,5 +42,15 @@ public class EntityConvertor {
         professorDTO.setPrimaryDepartment(professor.getPrimaryDepartment().getDepartmentId());
         professorDTO.setSecondaryDepartment(professor.getSecondaryDepartment().getDepartmentId());
         return professorDTO;
+    }
+
+    public static RegistrationDTO toRegistrationDTO(Registration registration)
+    {
+        RegistrationDTO registrationDTO=new RegistrationDTO();
+        BeanUtils.copyProperties(registration,registrationDTO);
+        registrationDTO.setStudentId(registration.getStudentId().getStudentId());
+        registrationDTO.setProfessorId(registration.getProfessorId().getProfessorId());
+        registrationDTO.setSubjectId(registration.getSubjectId().getSubjectId());
+        return registrationDTO;
     }
 }
