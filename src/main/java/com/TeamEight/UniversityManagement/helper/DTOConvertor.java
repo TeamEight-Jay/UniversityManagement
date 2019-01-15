@@ -1,13 +1,11 @@
 package com.TeamEight.UniversityManagement.helper;
 
-import com.TeamEight.UniversityManagement.dto.DepartmentDTO;
-import com.TeamEight.UniversityManagement.dto.ProfessorDTO;
-import com.TeamEight.UniversityManagement.dto.StudentDTO;
-import com.TeamEight.UniversityManagement.entity.Department;
-import com.TeamEight.UniversityManagement.entity.Professor;
-import com.TeamEight.UniversityManagement.entity.Student;
+import com.TeamEight.UniversityManagement.dto.*;
+import com.TeamEight.UniversityManagement.entity.*;
 import com.TeamEight.UniversityManagement.services.DepartmentService;
 import com.TeamEight.UniversityManagement.services.ProfessorService;
+import com.TeamEight.UniversityManagement.services.StudentService;
+import com.TeamEight.UniversityManagement.services.SubjectService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +16,10 @@ public class DTOConvertor {
     static DepartmentService departmentService;
     @Autowired
     static ProfessorService professorService;
+    @Autowired
+    static StudentService studentService;
+    @Autowired
+    static SubjectService subjectService;
 
     public static Department toDepartmentEntity(DepartmentDTO departmentDTO)
     {
@@ -47,6 +49,32 @@ public class DTOConvertor {
         professor.setPrimaryDepartment(primaryDepartment);
         professor.setSecondaryDepartment(secondaryDepartment);
         return professor;
+    }
+
+    public static Subject toSubjectEntity(SubjectDTO subjectDTO)
+    {
+        Subject subject=new Subject();
+        BeanUtils.copyProperties(subjectDTO,subject);
+        Department department=departmentService.select(subjectDTO.getDepartment());
+        subject.setDepartment(department);
+        return subject;
+    }
+
+    public static Registration toRegistrationEntity(RegistrationDTO registrationDTO)
+    {
+        Registration registration=new Registration();
+        BeanUtils.copyProperties(registrationDTO,registration);
+
+        Student student=studentService.select(registrationDTO.getStudentId());
+        Professor professor=professorService.select(registrationDTO.getProfessorId());
+        Subject subject=subjectService.select(registrationDTO.getSubjectId());
+
+        registration.setStudentId(student);
+        registration.setProfessorId(professor);
+        registration.setSubjectId(subject);
+
+        return registration;
+
     }
 
 }
