@@ -21,7 +21,7 @@ public class SubjectController {
 		return null;
 	}
 
-	@RequestMapping(value = "/select", method = RequestMethod.GET)
+	@GetMapping("/select")
 	public SubjectDTO select(@PathVariable String id) {
 		subjectService.select(id);
 		return null;
