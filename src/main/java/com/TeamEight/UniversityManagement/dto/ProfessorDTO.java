@@ -3,17 +3,17 @@ package com.TeamEight.UniversityManagement.dto;
 import com.TeamEight.UniversityManagement.entity.Department;
 
 public class ProfessorDTO {
-    private String professorID;
+    private String professorId;
     private String professorName;
     private String primaryDepartment;
     private String secondaryDepartment;
 
-    public String getProfessorID() {
-        return professorID;
+    public String getProfessorId() {
+        return professorId;
     }
 
-    public void setProfessorID(String professorID) {
-        this.professorID = professorID;
+    public void setProfessorId(String professorId) {
+        this.professorId = professorId;
     }
 
     public String getProfessorName() {

@@ -4,18 +4,14 @@ import javax.persistence.Entity;
 
 @Entity
 public class Professor {
-    private String professorID;
+    private String professorId;
     private String professorName;
     private Department primaryDepartment;
     private Department secondaryDepartment;
 
-    public String getProfessorID() {
-        return professorID;
-    }
+    public String getProfessorId() {return professorId;}
 
-    public void setProfessorID(String professorID) {
-        this.professorID = professorID;
-    }
+    public void setProfessorId(String professorId) {this.professorId = professorId;}
 
     public String getProfessorName() {
         return professorName;
