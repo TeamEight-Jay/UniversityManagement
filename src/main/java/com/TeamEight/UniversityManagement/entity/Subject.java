@@ -1,11 +1,13 @@
 package com.TeamEight.UniversityManagement.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = Subject.TABLE_NAME)
 public class Subject {
+    @Id
     private String subjectId;
     private String subjectName;
     private int maxScore;

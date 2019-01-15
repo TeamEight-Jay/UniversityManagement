@@ -1,11 +1,13 @@
 package com.TeamEight.UniversityManagement.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = Registration.TABLE_NAME)
 public class Registration {
+    @Id
     private String registrationId;
     private Student studentId;
     private Professor professorId;

@@ -1,11 +1,13 @@
 package com.TeamEight.UniversityManagement.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = Department.TABLE_NAME)
 public class Department {
+    @Id
     private String departmentId;
     private String departmentName;
     private Professor headOfDepartment;
