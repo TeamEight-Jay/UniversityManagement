@@ -18,6 +18,7 @@ public class EntityConvertor {
         DepartmentDTO departmentDTO=new DepartmentDTO();
         BeanUtils.copyProperties(department,departmentDTO);
         departmentDTO.setHeadOfDepartment(department.getHeadOfDepartment().getProfessorId());
+
         return departmentDTO;
     }
 
@@ -26,6 +27,7 @@ public class EntityConvertor {
         StudentDTO studentDTO=new StudentDTO();
         BeanUtils.copyProperties(student,studentDTO);
         studentDTO.setDepartment(student.getDepartment().getDepartmentId());
+
         return studentDTO;
     }
 
@@ -35,6 +37,7 @@ public class EntityConvertor {
         BeanUtils.copyProperties(professor,professorDTO);
         professorDTO.setPrimaryDepartment(professor.getPrimaryDepartment().getDepartmentId());
         professorDTO.setSecondaryDepartment(professor.getSecondaryDepartment().getDepartmentId());
+
         return professorDTO;
     }
 
@@ -45,6 +48,7 @@ public class EntityConvertor {
         registrationDTO.setStudentId(registration.getStudentId().getStudentId());
         registrationDTO.setProfessorId(registration.getProfessorId().getProfessorId());
         registrationDTO.setSubjectId(registration.getSubjectId().getSubjectId());
+
         return registrationDTO;
     }
 
@@ -52,6 +56,7 @@ public class EntityConvertor {
         SubjectDTO subjectDTO=new SubjectDTO();
         BeanUtils.copyProperties(subject,subjectDTO);
         subjectDTO.setDepartment(subject.getDepartment().getDepartmentId());
+
         return subjectDTO;
     }
 }

@@ -37,6 +37,7 @@ public class DTOConvertor {
         BeanUtils.copyProperties(studentDTO,student);
         Department department=departmentService.select(studentDTO.getDepartment());
         student.setDepartment(department);
+
         return student;
     }
 
@@ -48,6 +49,7 @@ public class DTOConvertor {
         Department secondaryDepartment=departmentService.select(professorDTO.getSecondaryDepartment());
         professor.setPrimaryDepartment(primaryDepartment);
         professor.setSecondaryDepartment(secondaryDepartment);
+
         return professor;
     }
 
@@ -57,6 +59,7 @@ public class DTOConvertor {
         BeanUtils.copyProperties(subjectDTO,subject);
         Department department=departmentService.select(subjectDTO.getDepartment());
         subject.setDepartment(department);
+
         return subject;
     }
 
@@ -64,11 +67,9 @@ public class DTOConvertor {
     {
         Registration registration=new Registration();
         BeanUtils.copyProperties(registrationDTO,registration);
-
         Student student=studentService.select(registrationDTO.getStudentId());
         Professor professor=professorService.select(registrationDTO.getProfessorId());
         Subject subject=subjectService.select(registrationDTO.getSubjectId());
-
         registration.setStudentId(student);
         registration.setProfessorId(professor);
         registration.setSubjectId(subject);
