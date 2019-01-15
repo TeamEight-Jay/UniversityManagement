@@ -1,13 +1,7 @@
 package com.TeamEight.UniversityManagement.helper;
 
-import com.TeamEight.UniversityManagement.dto.DepartmentDTO;
-import com.TeamEight.UniversityManagement.dto.ProfessorDTO;
-import com.TeamEight.UniversityManagement.dto.RegistrationDTO;
-import com.TeamEight.UniversityManagement.dto.StudentDTO;
-import com.TeamEight.UniversityManagement.entity.Department;
-import com.TeamEight.UniversityManagement.entity.Professor;
-import com.TeamEight.UniversityManagement.entity.Registration;
-import com.TeamEight.UniversityManagement.entity.Student;
+import com.TeamEight.UniversityManagement.dto.*;
+import com.TeamEight.UniversityManagement.entity.*;
 import com.TeamEight.UniversityManagement.services.DepartmentService;
 import com.TeamEight.UniversityManagement.services.ProfessorService;
 import org.springframework.beans.BeanUtils;
@@ -52,5 +46,12 @@ public class EntityConvertor {
         registrationDTO.setProfessorId(registration.getProfessorId().getProfessorId());
         registrationDTO.setSubjectId(registration.getSubjectId().getSubjectId());
         return registrationDTO;
+    }
+
+    public static SubjectDTO toSubjectDTO(Subject subject) {
+        SubjectDTO subjectDTO=new SubjectDTO();
+        BeanUtils.copyProperties(subject,subjectDTO);
+        subjectDTO.setDepartment(subject.getDepartment().getDepartmentId());
+        return subjectDTO;
     }
 }
