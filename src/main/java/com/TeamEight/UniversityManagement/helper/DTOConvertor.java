@@ -1,6 +1,7 @@
 package com.TeamEight.UniversityManagement.helper;
 
 import com.TeamEight.UniversityManagement.dto.DepartmentDTO;
+import com.TeamEight.UniversityManagement.dto.ProfessorDTO;
 import com.TeamEight.UniversityManagement.dto.StudentDTO;
 import com.TeamEight.UniversityManagement.entity.Department;
 import com.TeamEight.UniversityManagement.entity.Professor;
@@ -35,6 +36,17 @@ public class DTOConvertor {
         Department department=departmentService.select(studentDTO.getDepartment());
         student.setDepartment(department);
         return student;
+    }
+
+    public static Professor toProfessorEntity(ProfessorDTO professorDTO)
+    {
+        Professor professor=new Professor();
+        BeanUtils.copyProperties(professorDTO,professor);
+        Department primaryDepartment=departmentService.select(professorDTO.getPrimaryDepartment());
+        Department secondaryDepartment=departmentService.select(professorDTO.getSecondaryDepartment());
+        professor.setPrimaryDepartment(primaryDepartment);
+        professor.setSecondaryDepartment(secondaryDepartment);
+        return professor;
     }
 
 }
