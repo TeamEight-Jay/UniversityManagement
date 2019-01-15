@@ -40,7 +40,7 @@ public class Professor {
     @Override
     public String toString() {
         return "Professor{" +
-                "professorID='" + professorID + '\'' +
+                "professorID='" + professorId + '\'' +
                 ", professorName='" + professorName + '\'' +
                 ", primaryDepartment=" + primaryDepartment +
                 ", secondaryDepartment=" + secondaryDepartment +
