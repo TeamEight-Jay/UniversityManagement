@@ -18,11 +18,13 @@ public class SubjectController {
 		Subject subject = new Subject();
 		BeanUtils.copyProperties(subjectDTO, subject);
 		subjectService.add(subject);
+		return subjectDTO;
+	}
+
+	@GetMapping("/select/{subjectId}")
+	public SubjectDTO select(@PathVariable String subjectId) {
+		subjectService.select(subjectId);
 		return null;
 	}
 
-	@GetMapping("/select")
-	public SubjectDTO select(@PathVariable String id) {
-		subjectService.select(id);
-		return null;
-	}
+}
