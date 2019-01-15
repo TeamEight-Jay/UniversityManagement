@@ -26,4 +26,3 @@ public class SubjectController {
 		subjectService.select(id);
 		return null;
 	}
-}
