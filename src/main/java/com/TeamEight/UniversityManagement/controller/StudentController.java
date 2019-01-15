@@ -19,11 +19,11 @@ public class StudentController {
     @PostMapping("/add")
     public StudentDTO add(@RequestBody StudentDTO studentDTO){
         Student student=DTOConvertor.toStudentEntity(studentDTO);
-        studentService.add(student);
-        return studentDTO;
+        Student studentCreated=studentService.add(student);
+        return EntityConvertor.toStudentDTO(studentCreated);
     }
 
-    @GetMapping("/select")
+    @GetMapping("/select/{studentId}")
     public StudentDTO select(@PathVariable String studentId){
         Student student = studentService.select(studentId);
         StudentDTO studentDTO = EntityConvertor.toStudentDTO(student);
