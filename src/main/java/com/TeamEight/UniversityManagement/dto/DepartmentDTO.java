@@ -1,6 +1,6 @@
 package com.TeamEight.UniversityManagement.dto;
 
-public class DepartmentDto {
+public class DepartmentDTO {
     private String departmentId;
     private String departmentName;
     private String headOfDepartment;
