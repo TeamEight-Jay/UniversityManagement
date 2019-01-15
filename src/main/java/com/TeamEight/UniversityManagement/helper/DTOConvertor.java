@@ -7,6 +7,6 @@ public class DTOConvertor {
 
     public static Department toDepartmentDTO(DepartmentDTO departmentDTO)
     {
-
+        return null;
     }
 }
