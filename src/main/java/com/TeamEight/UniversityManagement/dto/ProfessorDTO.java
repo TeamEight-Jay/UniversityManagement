@@ -1,7 +1,5 @@
 package com.TeamEight.UniversityManagement.dto;
 
-import com.TeamEight.UniversityManagement.entity.Department;
-
 public class ProfessorDTO {
     private String professorId;
     private String professorName;
