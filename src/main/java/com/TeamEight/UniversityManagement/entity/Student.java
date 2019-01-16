@@ -15,7 +15,7 @@ public class Student {
     private String course;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="department_Id")
+    @JoinColumn(name="department_id")
     private Department department;
 
     public static final String TABLE_NAME = "STUDENT";
