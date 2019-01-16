@@ -12,7 +12,7 @@ public class Professor {
     private String professorName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="department_Id")
+    @JoinColumn(name="department_id")
     private Department primaryDepartment;
 
     @ManyToOne(fetch = FetchType.LAZY)

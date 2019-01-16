@@ -1,8 +1,6 @@
 package com.TeamEight.UniversityManagement.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = Student.TABLE_NAME)
@@ -12,6 +10,8 @@ public class Student {
     private String studentName;
     private int yearOfJoining;
     private String course;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="department_Id")
     private Department department;
     public static final String TABLE_NAME = "STUDENT";
 

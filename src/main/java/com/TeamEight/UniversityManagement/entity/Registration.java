@@ -1,16 +1,20 @@
 package com.TeamEight.UniversityManagement.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = Registration.TABLE_NAME)
 public class Registration {
     @Id
     private String registrationId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="student_id")
     private Student studentId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="professor_id")
     private Professor professorId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="subject_id")
     private Subject subjectId;
     private int semester;
     private int score;
