@@ -7,4 +7,6 @@ public interface ProfessorService {
     Professor add(Professor professor);
 
     Professor select(String professorId);
+
+    double rating(String professorId);
 }

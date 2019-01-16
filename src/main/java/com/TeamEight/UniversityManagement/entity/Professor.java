@@ -1,6 +1,8 @@
 package com.TeamEight.UniversityManagement.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = Professor.TABLE_NAME)
@@ -18,6 +20,10 @@ public class Professor {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="secondary_department",referencedColumnName = "departmentId")
     private Department secondaryDepartment;
+
+    @OneToMany(mappedBy = "professorId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Registration> registrationList=new ArrayList<Registration>();
+
 
     static final String TABLE_NAME = "PROFESSOR";
 

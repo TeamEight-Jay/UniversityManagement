@@ -36,7 +36,6 @@ public class StudentServiceImpl implements StudentService {
 
         for(Registration registration:registrationList)
         {
-            System.out.println(registration.getSubjectId().getMaxScore());
             earnedCredit+=registration.getScore();
             offeredCredit+=registration.getSubjectId().getMaxScore();
         }

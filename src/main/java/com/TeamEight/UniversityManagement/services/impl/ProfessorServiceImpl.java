@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProfessorServiceImpl implements ProfessorService {
+	final double AVERAGE_SCORE_WEIGHTAGE=0.8;
+	final double STUDENT_COUNT_WEIGHTAGE=1-AVERAGE_SCORE_WEIGHTAGE;
 	@Autowired
 	ProfessorRepository professorRepository;
 	@Override
@@ -19,5 +21,11 @@ public class ProfessorServiceImpl implements ProfessorService {
 	@Override
 	public Professor select(String professorId) {
 		return professorRepository.findOne(professorId);
+	}
+
+	@Override
+	public double rating(String professorId) {
+		Professor professor=this.select(professorId);
+		return 0;
 	}
 }
