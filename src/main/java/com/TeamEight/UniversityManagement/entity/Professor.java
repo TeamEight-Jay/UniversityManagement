@@ -1,8 +1,6 @@
 package com.TeamEight.UniversityManagement.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = Professor.TABLE_NAME)
@@ -10,10 +8,18 @@ public class Professor {
 
     @Id
     private String professorId;
+
     private String professorName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="department_Id")
     private Department primaryDepartment;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="department_Id")
     private Department secondaryDepartment;
-    public static final String TABLE_NAME = "PROFESSOR";
+
+    static final String TABLE_NAME = "PROFESSOR";
 
     public String getProfessorId() {
         return professorId;
