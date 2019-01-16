@@ -44,5 +44,11 @@ public class ProfessorController {
             professorDTO.setSecondaryDepartment(professor.getSecondaryDepartment().getDepartmentId());
             return professorDTO;
         }
+
+        @GetMapping("/rating/{professorId}")
+        public double rating(@PathVariable String professorId)
+        {
+            return professorService.rating(professorId);
+        }
     }
 

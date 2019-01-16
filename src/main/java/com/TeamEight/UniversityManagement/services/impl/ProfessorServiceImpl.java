@@ -7,12 +7,15 @@ import com.TeamEight.UniversityManagement.services.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.TreeSet;
 
 @Service
 public class ProfessorServiceImpl implements ProfessorService {
 	final double AVERAGE_SCORE_WEIGHTAGE=0.8;
 	final double STUDENT_COUNT_WEIGHTAGE=1-AVERAGE_SCORE_WEIGHTAGE;
+	final double DEGRADE_FACTOR=0.98;
 	@Autowired
 	ProfessorRepository professorRepository;
 	@Override
@@ -33,12 +36,14 @@ public class ProfessorServiceImpl implements ProfessorService {
 		HashMap<String,Double> averageScoreMap=new HashMap<String,Double>();
 		HashMap<String,Integer> studentCountMap=new HashMap<String,Integer>();
 
+		if(professor.getRegistrationList().size()==0) return 0;
+
 		for(Registration registration:professor.getRegistrationList())
 		{
 			String key=registration.getSubjectId().getSubjectId();
 
 			double totalScoreValue=averageScoreMap.getOrDefault(key,0.0);
-			totalScoreValue+=registration.getScore();
+			totalScoreValue+=((double)registration.getScore()/(double)registration.getSubjectId().getMaxScore());
 
 			averageScoreMap.put(key,totalScoreValue);
 
@@ -49,15 +54,26 @@ public class ProfessorServiceImpl implements ProfessorService {
 
 		}
 
+		TreeSet<Double> sortedScore=new TreeSet<Double>(Comparator.reverseOrder());
+
 		for(String subject:averageScoreMap.keySet())
 		{
-			double totalScoreValue=averageScoreMap.get(subject);
-			int totalCountValue=studentCountMap.get(subject);
-			averageScoreMap.put(subject,totalScoreValue/totalCountValue);
+			int studentCount=studentCountMap.get(subject);
+			double averageScore=(averageScoreMap.get(subject)/(double)studentCount);
+			double weightedSum=(AVERAGE_SCORE_WEIGHTAGE*averageScore)+(STUDENT_COUNT_WEIGHTAGE*studentCount);
+			sortedScore.add(weightedSum);
 		}
 
+		double currentDegradeFactor=DEGRADE_FACTOR;
+		double finalScore=0;
+		for(double score:sortedScore)
+		{
+			finalScore+=(currentDegradeFactor*score);
+			currentDegradeFactor*=currentDegradeFactor;
+		}
 
+		finalScore=finalScore/(double)sortedScore.size();
 
-		return 0;
+		return finalScore;
 	}
 }
