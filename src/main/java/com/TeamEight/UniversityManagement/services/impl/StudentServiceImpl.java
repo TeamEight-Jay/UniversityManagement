@@ -30,8 +30,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public double getCGPA(String studentId) {
         Student student=this.select(studentId);
-        int earnedCredit=0;
-        int offeredCredit=0;
+        double earnedCredit=0;
+        double offeredCredit=0;
         List<Registration> registrationList=student.getRegistrationList();
 
         for(Registration registration:registrationList)
@@ -48,8 +48,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public double getSGPA(String studentId, int semester) {
         Student student=this.select(studentId);
-        int earnedCredit=0;
-        int offeredCredit=0;
+        double earnedCredit=0;
+        double offeredCredit=0;
         List<Registration> registrationList=student.getRegistrationList();
 
         for(Registration registration:registrationList)
@@ -61,7 +61,7 @@ public class StudentServiceImpl implements StudentService {
             }
         }
         if(offeredCredit==0) return 0;
-        return earnedCredit/offeredCredit;
+        return (earnedCredit/offeredCredit)*10;
     }
 
 
