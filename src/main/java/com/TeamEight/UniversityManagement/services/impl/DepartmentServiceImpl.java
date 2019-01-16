@@ -18,6 +18,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public Department select(String departmentId) {
+		System.out.println(departmentId);
 		return departmentRepository.findOne(departmentId);
 	}
 }

@@ -55,4 +55,16 @@ public class RegistrationDTO {
     public void setScore(int score) {
         this.score = score;
     }
+
+    @Override
+    public String toString() {
+        return "RegistrationDTO{" +
+                "registrationId='" + registrationId + '\'' +
+                ", studentId='" + studentId + '\'' +
+                ", professorId='" + professorId + '\'' +
+                ", subjectId='" + subjectId + '\'' +
+                ", semester=" + semester +
+                ", score=" + score +
+                '}';
+    }
 }

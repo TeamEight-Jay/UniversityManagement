@@ -1,9 +1,9 @@
 package com.TeamEight.UniversityManagement.controller;
 
 import com.TeamEight.UniversityManagement.dto.StudentDTO;
+import com.TeamEight.UniversityManagement.entity.Department;
 import com.TeamEight.UniversityManagement.entity.Student;
-import com.TeamEight.UniversityManagement.helper.DTOConvertor;
-import com.TeamEight.UniversityManagement.helper.EntityConvertor;
+import com.TeamEight.UniversityManagement.services.DepartmentService;
 import com.TeamEight.UniversityManagement.services.StudentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +15,30 @@ public class StudentController {
 
     @Autowired
     StudentService studentService;
+    @Autowired
+    DepartmentService departmentService;
 
     @PostMapping("/add")
     public StudentDTO add(@RequestBody StudentDTO studentDTO){
-        Student student=DTOConvertor.toStudentEntity(studentDTO);
+        Student student=new Student();
+        BeanUtils.copyProperties(studentDTO,student);
+        Department department=departmentService.select(studentDTO.getDepartment());
+        student.setDepartment(department);
+
         Student studentCreated=studentService.add(student);
-        return EntityConvertor.toStudentDTO(studentCreated);
+        StudentDTO studentDTOCreated=new StudentDTO();
+        BeanUtils.copyProperties(studentCreated,studentDTOCreated);
+        studentDTOCreated.setDepartment(studentCreated.getDepartment().getDepartmentId());
+
+        return studentDTOCreated;
     }
 
     @GetMapping("/select/{studentId}")
     public StudentDTO select(@PathVariable String studentId){
         Student student = studentService.select(studentId);
-        StudentDTO studentDTO = EntityConvertor.toStudentDTO(student);
+        StudentDTO studentDTO=new StudentDTO();
+        BeanUtils.copyProperties(student,studentDTO);
+        studentDTO.setDepartment(student.getDepartment().getDepartmentId());
         return studentDTO;
     }
 }

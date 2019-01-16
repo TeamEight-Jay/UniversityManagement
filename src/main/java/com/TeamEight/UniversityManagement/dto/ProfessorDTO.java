@@ -37,4 +37,14 @@ public class ProfessorDTO {
     public void setSecondaryDepartment(String secondaryDepartment) {
         this.secondaryDepartment = secondaryDepartment;
     }
+
+    @Override
+    public String toString() {
+        return "ProfessorDTO{" +
+                "professorId='" + professorId + '\'' +
+                ", professorName='" + professorName + '\'' +
+                ", primaryDepartment='" + primaryDepartment + '\'' +
+                ", secondaryDepartment='" + secondaryDepartment + '\'' +
+                '}';
+    }
 }
