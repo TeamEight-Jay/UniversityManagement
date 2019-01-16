@@ -28,7 +28,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public int getCGPA(String studentId) {
+    public double getCGPA(String studentId) {
         Student student=this.select(studentId);
         int earnedCredit=0;
         int offeredCredit=0;
@@ -36,16 +36,17 @@ public class StudentServiceImpl implements StudentService {
 
         for(Registration registration:registrationList)
         {
+            System.out.println(registration.getSubjectId().getMaxScore());
             earnedCredit+=registration.getScore();
             offeredCredit+=registration.getSubjectId().getMaxScore();
         }
         if(offeredCredit==0) return 0;
-        return earnedCredit/offeredCredit;
+        return (earnedCredit/offeredCredit)*10;
 
     }
 
     @Override
-    public int getSGPA(String studentId, int semester) {
+    public double getSGPA(String studentId, int semester) {
         Student student=this.select(studentId);
         int earnedCredit=0;
         int offeredCredit=0;

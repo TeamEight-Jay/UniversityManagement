@@ -41,4 +41,16 @@ public class StudentController {
         studentDTO.setDepartment(student.getDepartment().getDepartmentId());
         return studentDTO;
     }
+
+    @GetMapping("/cgpa/{studentId}")
+    public double cgpa(@PathVariable String studentId){
+        double studentCGPA=studentService.getCGPA(studentId);
+        return studentCGPA;
+    }
+
+    @GetMapping("/sgpa/{studentId}/{semester}")
+    public double sgpa(@PathVariable String studentId,@PathVariable int semester){
+        double studentSGPA=studentService.getSGPA(studentId,semester);
+        return studentSGPA;
+    }
 }
