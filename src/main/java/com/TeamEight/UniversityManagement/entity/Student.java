@@ -1,6 +1,8 @@
 package com.TeamEight.UniversityManagement.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = Student.TABLE_NAME)
@@ -17,6 +19,17 @@ public class Student {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="department_id")
     private Department department;
+
+    public List<Registration> getRegistrationList() {
+        return registrationList;
+    }
+
+    public void setRegistrationList(List<Registration> registrationList) {
+        this.registrationList = registrationList;
+    }
+
+    @OneToMany(mappedBy = "studentId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Registration> registrationList=new ArrayList<Registration>();
 
     public static final String TABLE_NAME = "STUDENT";
 
