@@ -7,9 +7,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = Department.TABLE_NAME)
 public class Department {
+
     @Id
     private String departmentId;
+
     private String departmentName;
+
     public static final String TABLE_NAME = "DEPARTMENT";
 
 

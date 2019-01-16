@@ -5,13 +5,18 @@ import javax.persistence.*;
 @Entity
 @Table(name = Subject.TABLE_NAME)
 public class Subject {
+
     @Id
     private String subjectId;
+
     private String subjectName;
+
     private int maxScore;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="department_id")
     private Department department;
+
     public static final String TABLE_NAME = "SUBJECT";
 
     public String getSubjectId() {

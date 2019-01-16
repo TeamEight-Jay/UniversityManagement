@@ -12,11 +12,11 @@ public class Professor {
     private String professorName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="department_id")
+    @JoinColumn(name="primary_department",referencedColumnName = "departmentId")
     private Department primaryDepartment;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="department_Id")
+    @JoinColumn(name="secondary_department",referencedColumnName = "departmentId")
     private Department secondaryDepartment;
 
     static final String TABLE_NAME = "PROFESSOR";

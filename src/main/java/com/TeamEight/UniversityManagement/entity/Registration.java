@@ -7,17 +7,22 @@ import javax.persistence.*;
 public class Registration {
     @Id
     private String registrationId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="student_id")
     private Student studentId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="professor_id")
     private Professor professorId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="subject_id")
     private Subject subjectId;
+
     private int semester;
     private int score;
+
     public static final String TABLE_NAME = "REGISTRATION";
 
     public String getRegistrationId() {
