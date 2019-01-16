@@ -21,6 +21,14 @@ public class Professor {
     @JoinColumn(name="secondary_department",referencedColumnName = "departmentId")
     private Department secondaryDepartment;
 
+    public List<Registration> getRegistrationList() {
+        return registrationList;
+    }
+
+    public void setRegistrationList(List<Registration> registrationList) {
+        this.registrationList = registrationList;
+    }
+
     @OneToMany(mappedBy = "professorId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Registration> registrationList=new ArrayList<Registration>();
 

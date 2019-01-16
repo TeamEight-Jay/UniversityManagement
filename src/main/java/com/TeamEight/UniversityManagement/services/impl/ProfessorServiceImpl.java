@@ -1,10 +1,13 @@
 package com.TeamEight.UniversityManagement.services.impl;
 
 import com.TeamEight.UniversityManagement.entity.Professor;
+import com.TeamEight.UniversityManagement.entity.Registration;
 import com.TeamEight.UniversityManagement.repository.ProfessorRepository;
 import com.TeamEight.UniversityManagement.services.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
 
 @Service
 public class ProfessorServiceImpl implements ProfessorService {
@@ -26,6 +29,35 @@ public class ProfessorServiceImpl implements ProfessorService {
 	@Override
 	public double rating(String professorId) {
 		Professor professor=this.select(professorId);
+
+		HashMap<String,Double> averageScoreMap=new HashMap<String,Double>();
+		HashMap<String,Integer> studentCountMap=new HashMap<String,Integer>();
+
+		for(Registration registration:professor.getRegistrationList())
+		{
+			String key=registration.getSubjectId().getSubjectId();
+
+			double totalScoreValue=averageScoreMap.getOrDefault(key,0.0);
+			totalScoreValue+=registration.getScore();
+
+			averageScoreMap.put(key,totalScoreValue);
+
+			int studentCountValue=studentCountMap.getOrDefault(key,0);
+			studentCountValue+=1;
+
+			studentCountMap.put(key,studentCountValue);
+
+		}
+
+		for(String subject:averageScoreMap.keySet())
+		{
+			double totalScoreValue=averageScoreMap.get(subject);
+			int totalCountValue=studentCountMap.get(subject);
+			averageScoreMap.put(subject,totalScoreValue/totalCountValue);
+		}
+
+
+
 		return 0;
 	}
 }
