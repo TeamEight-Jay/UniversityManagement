@@ -9,4 +9,6 @@ public interface StudentService {
     Student select(String studentId);
 
     int getCGPA(String studentId);
+
+    int getSGPA(String studentId,int semester);
 }

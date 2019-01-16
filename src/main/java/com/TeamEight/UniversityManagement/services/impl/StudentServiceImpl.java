@@ -36,11 +36,31 @@ public class StudentServiceImpl implements StudentService {
 
         for(Registration registration:registrationList)
         {
-
+            earnedCredit+=registration.getScore();
+            offeredCredit+=registration.getSubjectId().getMaxScore();
         }
-
+        if(offeredCredit==0) return 0;
         return earnedCredit/offeredCredit;
 
+    }
+
+    @Override
+    public int getSGPA(String studentId, int semester) {
+        Student student=this.select(studentId);
+        int earnedCredit=0;
+        int offeredCredit=0;
+        List<Registration> registrationList=student.getRegistrationList();
+
+        for(Registration registration:registrationList)
+        {
+            if(registration.getSemester()==semester)
+            {
+                earnedCredit += registration.getScore();
+                offeredCredit += registration.getSubjectId().getMaxScore();
+            }
+        }
+        if(offeredCredit==0) return 0;
+        return earnedCredit/offeredCredit;
     }
 
 
