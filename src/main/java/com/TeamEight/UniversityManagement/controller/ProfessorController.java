@@ -19,11 +19,11 @@ public class ProfessorController {
             Professor professorCreated=professorService.add(professor);
             return EntityConvertor.toProfessorDTO(professorCreated);
         }
-    @GetMapping("/select/{professorId}")
-    public ProfessorDTO select(@PathVariable String professorId) {
-        Professor professor = professorService.select(professorId);
-        ProfessorDTO professorDTO = EntityConvertor.toProfessorDTO(professor);
-        return professorDTO;
-    }
+        @GetMapping("/select/{professorId}")
+        public ProfessorDTO select(@PathVariable String professorId) {
+            Professor professor = professorService.select(professorId);
+            ProfessorDTO professorDTO = EntityConvertor.toProfessorDTO(professor);
+            return professorDTO;
+        }
     }
 
