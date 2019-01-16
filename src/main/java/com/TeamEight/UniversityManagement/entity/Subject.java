@@ -1,6 +1,7 @@
 package com.TeamEight.UniversityManagement.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = Subject.TABLE_NAME)
@@ -59,5 +60,22 @@ public class Subject {
                 ", maxScore=" + maxScore +
                 ", department=" + department +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subject subject = (Subject) o;
+        return maxScore == subject.maxScore &&
+                Objects.equals(subjectId, subject.subjectId) &&
+                Objects.equals(subjectName, subject.subjectName) &&
+                Objects.equals(department, subject.department);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(subjectId, subjectName, maxScore, department);
     }
 }

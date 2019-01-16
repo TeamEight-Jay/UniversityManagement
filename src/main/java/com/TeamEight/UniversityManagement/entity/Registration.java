@@ -1,6 +1,7 @@
 package com.TeamEight.UniversityManagement.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = Registration.TABLE_NAME)
@@ -83,5 +84,24 @@ public class Registration {
                 ", semester=" + semester +
                 ", score=" + score +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Registration that = (Registration) o;
+        return semester == that.semester &&
+                score == that.score &&
+                Objects.equals(registrationId, that.registrationId) &&
+                Objects.equals(studentId, that.studentId) &&
+                Objects.equals(professorId, that.professorId) &&
+                Objects.equals(subjectId, that.subjectId);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(registrationId, studentId, professorId, subjectId, semester, score);
     }
 }

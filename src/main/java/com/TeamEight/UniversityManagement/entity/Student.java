@@ -3,6 +3,7 @@ package com.TeamEight.UniversityManagement.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = Student.TABLE_NAME)
@@ -22,10 +23,6 @@ public class Student {
 
     public List<Registration> getRegistrationList() {
         return registrationList;
-    }
-
-    public void setRegistrationList(List<Registration> registrationList) {
-        this.registrationList = registrationList;
     }
 
     @OneToMany(mappedBy = "studentId", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -82,5 +79,24 @@ public class Student {
                 ", course='" + course + '\'' +
                 ", department=" + department +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return yearOfJoining == student.yearOfJoining &&
+                Objects.equals(studentId, student.studentId) &&
+                Objects.equals(studentName, student.studentName) &&
+                Objects.equals(course, student.course) &&
+                Objects.equals(department, student.department) &&
+                Objects.equals(registrationList, student.registrationList);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(studentId, studentName, yearOfJoining, course, department, registrationList);
     }
 }
