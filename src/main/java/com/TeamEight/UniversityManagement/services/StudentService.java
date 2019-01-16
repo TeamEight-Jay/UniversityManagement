@@ -7,4 +7,6 @@ public interface StudentService {
     Student add(Student student);
 
     Student select(String studentId);
+
+    int getCGPA(String studentId);
 }
